@@ -1,0 +1,66 @@
+
+body {
+    display: inline-block;
+    min-width: 100%;
+}
+
+input {
+    margin-bottom: 20px;
+    border: 0px;
+    border-bottom: solid 2px rgba(0, 0, 0, 0.3);
+}
+
+input:focus {
+    outline:none;
+    border-bottom: solid 2px #007bff;
+}
+
+.flexRowCenter {
+    display: flex;
+    justify-content: center;
+}
+
+#navbar {
+    height: 60px;
+    flex-wrap: nowrap;
+    display: inline-flex;
+    min-width: 100%;
+}
+
+#navbar_menu {
+    display: flex;
+    justify-content: space-between;
+}
+
+#navbar_menu a {
+    display: block;
+    text-decoration: none;
+    color: #fff;
+    margin: 10px;
+}
+
+
+
+#brand_name {
+    display: inline-flex;
+    align-items: center;
+    height: inherit;
+    font-weight: bold;
+}
+
+#brand_logo {
+    position: relative;
+    top:10px;
+}
+
+
+
+#newPatientForm {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#form_submit {
+    align-self: stretch;
+}
