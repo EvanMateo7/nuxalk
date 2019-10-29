@@ -31,7 +31,7 @@ export const RegisterPage = {
             });
             const jsonBody = JSON.stringify(object)
 
-            fetch("http://localhost:8080/api/patient/", {
+            fetch("/api/patient/", {
                 method: "post",
                 headers: {
                     'Content-Type': 'application/json'
