@@ -3,7 +3,7 @@ export const MainPage = {
     render: async() => {
         const html = 
         `
-            <h1>Main Page</h1>
+            <h3>Main Page</h3>
         `
         return html;
     },
