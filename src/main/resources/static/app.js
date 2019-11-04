@@ -1,31 +1,22 @@
 
-import { Tools } from "/tools/tools.js";
-import { RegisterPage } from "/views/RegisterPage.js";
-import { MainPage } from "/views/MainPage.js";
-import { ErrorPage } from "/views/ErrorPage.js";
+const newPatientForm = document.getElementById("newPatientForm");
+        
+newPatientForm.addEventListener("submit", e => {
+    e.preventDefault();
 
-// Routes
-const routes = {
-    '/': MainPage,
-    '/register': RegisterPage
-}
+    const formData = new FormData(newPatientForm);
+    
+    const object = {};
+    formData.forEach(function(value, key){
+        object[key] = value;
+    });
+    const jsonBody = JSON.stringify(object)
 
-// Routing Function
-const router = async() => {
-    const header = document.getElementById('header_container');
-    const content = document.getElementById('content_container');
-    const footer = document.getElementById('footer_container');
-
-    // Select new page based on route
-    let route = Tools.parseURLFragment();
-    let URLRoute = Tools.getURLRoute(route);
-    let newContent = routes[URLRoute] || ErrorPage;
-
-    // Render new page
-    content.innerHTML = await newContent.render();
-    newContent.postRender();
-}
-
-// Listeners
-window.addEventListener('hashchange', router);
-window.addEventListener('load', router);
+    fetch("/api/patient/", {
+        method: "post",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: jsonBody
+    });
+});

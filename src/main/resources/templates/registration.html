@@ -21,13 +21,23 @@
         crossorigin="anonymous"></script>
     <script type="module" src="/app.js"></script>
 
-    <title>Nuxalk</title>
+    <title>Registration</title>
 </head>
 
 <body>
     <section th:replace="./navbar"></section>
 
-    <h3>MainPage</h3>
+    <div class="flexRowCenter">
+        <form id="newPatientForm">
+        <label for="firstName">First Name</label>
+        <input type="text" name="firstName" id="firstName">
+        <label for="lastName">Last Name</label>
+        <input type="text" name="lastName" id="lastName">
+        <label for="DOB">Date of Birth</label>
+        <input type="date" name="DOB" id="DOB">
+        <button id="form_submit" class="btn-primary" type="submit">Submit</button>
+        </form>
+    </div>
 </body>
 
 </html>
