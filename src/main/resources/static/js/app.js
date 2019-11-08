@@ -1,4 +1,4 @@
-
+/*
 const newPatientForm = document.getElementById("newPatientForm");
         
 newPatientForm.addEventListener("submit", e => {
@@ -19,4 +19,4 @@ newPatientForm.addEventListener("submit", e => {
         },
         body: jsonBody
     });
-});
+});*/

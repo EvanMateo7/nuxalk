@@ -28,14 +28,12 @@
     <section th:replace="./navbar"></section>
 
     <div class="flexRowCenter">
-        <form id="newPatientForm">
-        <label for="firstName">First Name</label>
-        <input type="text" name="firstName" id="firstName">
-        <label for="lastName">Last Name</label>
-        <input type="text" name="lastName" id="lastName">
-        <label for="DOB">Date of Birth</label>
-        <input type="date" name="DOB" id="DOB">
-        <button id="form_submit" class="btn-primary" type="submit">Submit</button>
+        <form id="newPatientForm" th:action="@{/user}" th:object="${user}" method="post">
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" th:field="*{username}">
+        <label for="password">Password</label>
+        <input type="text" name="password" id="password" th:field="*{password}">
+        <input type="submit" class="btn-primary" value="Submit">
         </form>
     </div>
 </body>

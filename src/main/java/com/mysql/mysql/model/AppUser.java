@@ -66,4 +66,9 @@ public class AppUser {
     public void setUserRoles(Set<Role> userRoles) {
         this.userRoles = userRoles;
     }
+
+    @Override
+    public String toString() {
+        return this.username + " " + this.password;
+    }
 }

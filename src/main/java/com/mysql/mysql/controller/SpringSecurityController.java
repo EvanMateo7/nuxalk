@@ -34,7 +34,7 @@ public class SpringSecurityController extends WebSecurityConfigurerAdapter {
             .and()
             .authorizeRequests()
             .antMatchers("/register").permitAll()
-            .anyRequest().authenticated()
+            .anyRequest().permitAll()
             .and()
             .formLogin()
             .and()
@@ -43,13 +43,18 @@ public class SpringSecurityController extends WebSecurityConfigurerAdapter {
 
     @Autowired
     UserService userDetailsService;
+
+    @Bean
+    public BCryptPasswordEncoder bCryptPasswordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 	
     @Bean
 	public AuthenticationProvider authProvider()
 	{
 		DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
 		provider.setUserDetailsService(userDetailsService);
-		provider.setPasswordEncoder(new BCryptPasswordEncoder());
+		provider.setPasswordEncoder(bCryptPasswordEncoder());
 		return provider;
 	}
 }
