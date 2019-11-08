@@ -1,9 +1,11 @@
 package com.mysql.mysql.dao;
 
-import com.mysql.mysql.model.User;
+import java.util.Optional;
+
+import com.mysql.mysql.model.AppUser;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface UserDAO extends CrudRepository<User, Integer> {
-
+public interface UserDAO extends CrudRepository<AppUser, Integer> {
+    public Optional<AppUser> findByUsername(String username);
 }

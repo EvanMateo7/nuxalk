@@ -1,9 +1,17 @@
 package com.mysql.mysql.model;
 
+import java.util.Set;
+
+import com.mysql.mysql.model.AppUser;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+@Entity
+@Table(name="Role")
 public class Role {
     @Id
     @GeneratedValue
@@ -14,6 +22,9 @@ public class Role {
 
     @NotNull
     private String roleDescription;
+
+    @ManyToMany(mappedBy = "userRoles")
+    Set<AppUser> users;
 
     public int getRoleID() {
         return roleID;

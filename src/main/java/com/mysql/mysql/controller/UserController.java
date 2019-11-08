@@ -1,7 +1,8 @@
 package com.mysql.mysql.controller;
 
 import java.util.List;
-import com.mysql.mysql.model.User;
+import com.mysql.mysql.model.AppUser;
+import com.mysql.mysql.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,7 +20,7 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("/users")
-    public List<User> allUsers() {
+    public List<AppUser> allUsers() {
         return userService.findAll();
     }
 
@@ -35,7 +36,7 @@ public class UserController {
     }
 
 	@PostMapping("/user")
-	public User postRegister(@RequestBody User user) {
+	public AppUser postRegister(@RequestBody AppUser user) {
 		return userService.addUser(user);
 	}
 }
