@@ -10,9 +10,4 @@ public class MainController {
     public String mainPage() {
         return "index";
     }
-
-    @GetMapping("/registration")
-    public String registrationPage() {
-        return "registration";
-    }
 }

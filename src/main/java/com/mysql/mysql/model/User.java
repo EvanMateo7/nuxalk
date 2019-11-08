@@ -22,7 +22,7 @@ public class User {
     private String firstName;
     private String lastName;
     private Date dateOfBirth;
-    private UserRole role = UserRole.USER;
+    private String role = UserRole.USER.toString();
 
     public User() {
 
@@ -59,10 +59,10 @@ public class User {
     }
 
     public UserRole getRole() {
-        return role;
+        return UserRole.valueOf(role);
     }
 
     public void setRole(UserRole role) {
-        this.role = role;
+        this.role = role.toString();
     }
 }

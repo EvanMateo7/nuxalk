@@ -28,4 +28,8 @@ public class UserService {
     public void deleteById(int userId) {
         userDB.deleteById(userId);
     }
+
+    public User addUser(User user) {
+        return userDB.save(user);
+    }
 }
