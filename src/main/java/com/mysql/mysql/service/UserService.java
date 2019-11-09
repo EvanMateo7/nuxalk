@@ -2,6 +2,7 @@ package com.mysql.mysql.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -42,15 +43,17 @@ public class UserService implements UserDetailsService{
         userDB.deleteById(userId);
     }
 
-    public AppUser addUser(AppUser user) {
+    public void addUser(AppUser user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        return userDB.save(user);
+        userDB.save(user);
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         
-        AppUser user = userDB.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User does not exist."));
+        AppUser user = userDB.findByUsername(username).orElseThrow(() -> {
+            return new UsernameNotFoundException("User does not exist.");
+        });
         
         List<GrantedAuthority> grantList = new ArrayList<GrantedAuthority>();
         for (Role role: user.getUserRoles()) {
@@ -59,7 +62,6 @@ public class UserService implements UserDetailsService{
         }
 
         UserDetails userDetails = new User(user.getUsername(), user.getPassword(), grantList);
-        System.out.println(userDetails);
         return userDetails;
     }
 }

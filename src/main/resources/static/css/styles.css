@@ -10,6 +10,10 @@ input {
     border-bottom: solid 2px rgba(0, 0, 0, 0.3);
 }
 
+.title {
+    text-align: center;
+}
+
 input:focus {
     outline:none;
     border-bottom: solid 2px #007bff;

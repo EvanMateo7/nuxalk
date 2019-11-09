@@ -4,7 +4,6 @@ import com.mysql.mysql.model.AppUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class MainController {
@@ -17,6 +16,11 @@ public class MainController {
     @GetMapping("/register")
 	public String register(Model model) {
         model.addAttribute("user", new AppUser());
-		return "/register";
+		return "register";
+    }
+
+    @GetMapping("/scheduling")
+	public String scheduling() {
+		return "scheduling";
     }
 }

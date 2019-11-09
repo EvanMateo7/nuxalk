@@ -3,6 +3,8 @@ package com.mysql.mysql.model;
 import java.util.Set;
 
 import com.mysql.mysql.model.AppUser;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -11,13 +13,14 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name="Role")
+@Table(name="role")
 public class Role {
     @Id
     @GeneratedValue
     private int roleID;
     
     @NotNull
+    @Column(unique=true)
     private String role;
 
     @NotNull

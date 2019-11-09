@@ -30,11 +30,10 @@ public class SpringSecurityController extends WebSecurityConfigurerAdapter {
 
         http
             .csrf().disable()
-            .authorizeRequests().antMatchers("/css/**", "/js/**", "/images/**").permitAll()
-            .and()
             .authorizeRequests()
-            .antMatchers("/register").permitAll()
-            .anyRequest().permitAll()
+                .antMatchers("/css/**", "/js/**", "/images/**").permitAll()
+                .antMatchers("/register").permitAll()
+                .anyRequest().permitAll()
             .and()
             .formLogin()
             .and()

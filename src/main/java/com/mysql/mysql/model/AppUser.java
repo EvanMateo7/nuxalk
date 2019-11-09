@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.Set;
 import com.mysql.mysql.model.Role;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -12,24 +13,32 @@ import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 
 @Entity
-@Table(name="User")
+@Table(name="user")
 public class AppUser {
 
     @Id
     @GeneratedValue
     private int id;
+
+    @NotNull
+    @Column(unique=true)
     private String username;
+
+    @NotNull
     private String password;
+
     private Date dateOfBirth;
     
 	@ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
-    name = "AssignedRoles", 
-    joinColumns = @JoinColumn(name = "userID"), 
-    inverseJoinColumns = @JoinColumn(name = "roleID"))
+        name = "assigned_roles", 
+        joinColumns = @JoinColumn(name = "userID"), 
+        inverseJoinColumns = @JoinColumn(name = "roleID")
+    )
     Set<Role> userRoles;
 
     public AppUser() {
@@ -69,6 +78,6 @@ public class AppUser {
 
     @Override
     public String toString() {
-        return this.username + " " + this.password;
+        return "Username: " + this.username + " Password: " + this.password;
     }
 }
