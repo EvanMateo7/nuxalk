@@ -17,7 +17,7 @@ import javax.validation.constraints.NotNull;
 
 
 @Entity
-@Table(name="user")
+@Table(name="users")
 public class AppUser {
 
     @Id
