@@ -1,9 +1,13 @@
 <nav id="navbar" class="navbar navbar-dark bg-dark mb-4" th:fragment="navbar">
-    <a id="brand_container" class="navbar-brand" href="/">
-        <span id="brand_name">Nuxalk Hospital</span>
-    </a>
-    <img id="brand_logo" src="/images/brand_logo.svg" width="70" height="70" class="d-inline-block align-top" alt="Home">
-    <div id="navbar_menu">
+    <div id="navbar_left">
+        <a id="brand_container" class="navbar-brand" href="/">
+            <span id="brand_name">Nuxalk Hospital</span>
+        </a>
+    </div>
+    <div id="navbar_center">
+        <img id="brand_logo" src="/images/brand_logo.svg" width="70" height="70" class="d-inline-block align-top" alt="Home">
+    </div>
+    <div id="navbar_right">
         <a href="/register">Register</a>
         <a href="/scheduling">Scheduling</a>
         <form action="/logout">
