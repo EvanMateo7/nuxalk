@@ -2,7 +2,10 @@ package com.mysql.mysql.model;
 
 import java.sql.Date;
 import java.util.Set;
+
+import com.mysql.mysql.domain.Gender;
 import com.mysql.mysql.model.Role;
+import org.apache.tomcat.jni.Address;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -31,9 +34,129 @@ public class AppUser {
     @NotNull
     private String password;
 
+    @NotNull
+    private String firstName;
+
+    @NotNull
+    private String lastName;
+
     private Date dateOfBirth;
-    
-	@ManyToMany(fetch = FetchType.EAGER)
+
+    @NotNull
+    private String email;
+
+    @NotNull
+    private String insuranceNumber;
+
+    private String streetName;
+
+    private String postalCode;
+
+    private String phoneNumber;
+
+    private String city;
+
+    private String province;
+
+    private String country;
+
+    private Gender gender;
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getInsuranceNumber() {
+        return insuranceNumber;
+    }
+
+    public void setInsuranceNumber(String insuranceNumber) {
+        this.insuranceNumber = insuranceNumber;
+    }
+
+    public String getStreetName() {
+        return streetName;
+    }
+
+    public void setStreetName(String streetName) {
+        this.streetName = streetName;
+    }
+
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
         name = "assigned_roles", 
         joinColumns = @JoinColumn(name = "userID"), 

@@ -29,11 +29,19 @@
 
     <div class="flexRowCenter">
         <form id="newPatientForm" th:action="@{/user}" th:object="${user}" method="post">
-        <label for="username">Username</label>
-        <input type="text" name="username" id="username" th:field="*{username}">
-        <label for="password">Password</label>
-        <input type="text" name="password" id="password" th:field="*{password}">
-        <input type="submit" class="btn-primary" value="Submit">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" th:field="*{username}">
+            <label for="password">Password</label>
+            <input type="text" name="password" id="password" th:field="*{password}">
+            <label for="firstName">FirstName</label>
+            <input type="text" name="firstName" id="firstName" th:field="*{firstName}">
+            <label for="lastName">Last Name</label>
+            <input type="text" name="lastName" id="lastName" th:field="*{lastName}">
+            <label for="email">Email Address</label>
+            <input type="text" name="email" id="email" th:field="*{email}">
+            <label for="insuranceNumber">Insurance Number</label>
+            <input type="text" name="insuranceNumber" id="insuranceNumber" th:field="*{insuranceNumber}">
+            <input type="submit" class="btn-primary" value="Submit">
         </form>
     </div>
 </body>
