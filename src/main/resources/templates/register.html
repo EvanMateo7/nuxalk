@@ -26,22 +26,46 @@
 
 <body>
     <section th:replace="./navbar"></section>
-
+    
     <div class="flexRowCenter">
-        <form id="newPatientForm" th:action="@{/user}" th:object="${user}" method="post">
-            <label for="username">Username</label>
-            <input type="text" name="username" id="username" th:field="*{username}">
-            <label for="password">Password</label>
-            <input type="text" name="password" id="password" th:field="*{password}">
-            <label for="firstName">FirstName</label>
-            <input type="text" name="firstName" id="firstName" th:field="*{firstName}">
-            <label for="lastName">Last Name</label>
-            <input type="text" name="lastName" id="lastName" th:field="*{lastName}">
-            <label for="email">Email Address</label>
-            <input type="text" name="email" id="email" th:field="*{email}">
-            <label for="insuranceNumber">Insurance Number</label>
-            <input type="text" name="insuranceNumber" id="insuranceNumber" th:field="*{insuranceNumber}">
-            <input type="submit" class="btn-primary" value="Submit">
+        <form class="" id="newPatientForm" th:action="@{/user}" th:object="${user}" method="post" novalidate>
+            <div class="formGroup">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" name="username" id="username" th:field="*{username}">
+                <div class="invalid-feedback">Required and must be between 0 - 30 characters long.</div>
+            </div>
+
+            <div class="formGroup">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" name="password" id="password" th:field="*{password}"> 
+                <span class="invalid-feedback">Required and must be 8 characters or longer including an upper case letter and a special character '!', '@', '#', '$', '%', '^', '&'.</span>
+            </div>
+            
+            <div class="formGroup">
+                <label for="firstName">FirstName</label>
+                <input type="text" class="form-control" name="firstName" id="firstName" th:field="*{firstName}">
+                <div class="invalid-feedback">Required.</div>
+            </div>
+            
+            <div class="formGroup">
+                <label for="lastName">Last Name</label>
+                <input type="text" class="form-control" name="lastName" id="lastName" th:field="*{lastName}">
+                <div class="invalid-feedback">Required.</div>
+            </div>
+            
+            <div class="formGroup">
+                <label for="email">Email Address</label>
+                <input type="text" class="form-control" name="email" id="email" th:field="*{email}">
+                <div class="invalid-feedback">Invalid email. Valid email example: user@gmail.com</div>
+            </div>
+            
+            <div class="formGroup">
+                <label for="insuranceNumber">Insurance Number</label>
+                <input type="text" class="form-control" name="insuranceNumber" id="insuranceNumber" th:field="*{insuranceNumber}">
+                <div class="invalid-feedback">Invalid Health Insurance Number. See <a target="_blank" rel="noopener noreferrer" href="http://www.ramq.gouv.qc.ca/en/citizens/health-insurance/health-insurance-card/Pages/description.aspx" tabindex="-1">ramq</a> for help.</div>
+            </div>
+            
+            <input type="submit" class="btn-primary btn-lg" value="Submit">
         </form>
     </div>
 </body>
