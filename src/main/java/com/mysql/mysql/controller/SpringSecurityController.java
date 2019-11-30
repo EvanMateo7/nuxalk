@@ -33,6 +33,7 @@ public class SpringSecurityController extends WebSecurityConfigurerAdapter {
             .authorizeRequests()
                 .antMatchers("/css/**", "/js/**", "/images/**").permitAll()
                 .antMatchers("/main").permitAll()
+                .antMatchers("/").permitAll()
                 .antMatchers("/register").permitAll()
                 .antMatchers(HttpMethod.POST, "/user").permitAll()
                 .anyRequest().authenticated()
