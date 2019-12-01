@@ -1,19 +1,14 @@
 package com.mysql.mysql.model;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.sql.Time;
 import java.util.Date;
 
 @Entity
-@Table(name="Bookings")
+@Table(name="booking")
 public class Booking {
-
-
 
     @Id
     @GeneratedValue
@@ -31,8 +26,19 @@ public class Booking {
     @NotNull
     private Date date;
 
+    @NotNull
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "appUser_id", referencedColumnName = "id")
+    private AppUser appUser;
 
-    //add patientId as join table
+    public AppUser getAppUser() {
+        return appUser;
+    }
+
+    public void setAppUser(AppUser appUser) {
+        this.appUser = appUser;
+    }
+
     public int getId() {
         return id;
     }

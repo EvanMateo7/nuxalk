@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mysql.mysql.dao.UserDAO;
+import com.mysql.mysql.dao.api.UserDAO;
 import com.mysql.mysql.model.AppUser;
 import com.mysql.mysql.model.Role;
 
