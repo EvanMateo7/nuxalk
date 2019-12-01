@@ -4,6 +4,7 @@ import java.sql.Time;
 import java.util.Date;
 import java.util.List;
 import com.mysql.mysql.model.AppUser;
+import com.mysql.mysql.model.Booking;
 import com.mysql.mysql.service.BookingService;
 import com.mysql.mysql.service.UserService;
 
@@ -24,5 +25,20 @@ public class BookingController {
     @Autowired
     public BookingService bookingService;
 
+    @GetMapping("/booking/{insuranceNumber}")
+    @ResponseBody
+    public Booking getBookingByInusranceNumber(@PathVariable String insuranceNumber) {
+        try{
+            return bookingService.getBookingByAppUserInsuranceNumber(insuranceNumber);
+        } catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
 
+    @PostMapping("/booking")
+    public void processBooking(@ModelAttribute Booking booking){
+        System.out.println(booking);
+        bookingService.addBooking(booking);
+    }
 }
