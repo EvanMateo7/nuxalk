@@ -80,6 +80,6 @@ public class Booking {
     }
 
     public String toString(){
-        return "The booking date is: " + this.getDate().toString() + " by patient " + getAppUser().toString() + ". This booking starts at " + getStartTime().toString() + " and ends at " + getEnd() + "."
+        return "The booking date is: " + this.getDate().toString() + " by patient " + getAppUser().toString() + ". This booking starts at " + getStartTime().toString() + " and ends at " + getEnd() + ".";
     }
 }
