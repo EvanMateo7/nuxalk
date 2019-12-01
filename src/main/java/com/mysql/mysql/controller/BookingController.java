@@ -27,7 +27,7 @@ public class BookingController {
 
     @GetMapping("/booking/{insuranceNumber}")
     @ResponseBody
-    public Booking getBookingByInusranceNumber(@PathVariable String insuranceNumber) {
+    public Booking getBookingByInsuranceNumber(@PathVariable String insuranceNumber) {
         try{
             return bookingService.getBookingByAppUserInsuranceNumber(insuranceNumber);
         } catch(Exception e){
@@ -40,5 +40,16 @@ public class BookingController {
     public void processBooking(@ModelAttribute Booking booking){
         System.out.println(booking);
         bookingService.addBooking(booking);
+    }
+
+    @GetMapping("/booking")
+    public List<Booking> getAllBookings(){
+        return bookingService.getAllBooking();
+    }
+
+    @DeleteMapping("/booking")
+    public void deleteBooking(@ModelAttribute Booking booking){
+        System.out.println(booking);
+        bookingService.deleteBooking(booking);
     }
 }
