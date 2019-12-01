@@ -38,7 +38,7 @@
             <div class="formGroup">
                 <label for="password">Password</label>
                 <input type="password" class="form-control" name="password" id="password" th:field="*{password}"> 
-                <span class="invalid-feedback">Required and must be 8 characters or longer including an upper case letter and a special character '!', '@', '#', '$', '%', '^', '&'.</span>
+                <div class="invalid-feedback">Required and must be 8 characters or longer including an upper case letter and a special character '!', '@', '#', '$', '%', '^', '&'.</div>
             </div>
             
             <div class="formGroup">
@@ -65,7 +65,7 @@
                 <div class="invalid-feedback">Invalid Health Insurance Number. See <a target="_blank" rel="noopener noreferrer" href="http://www.ramq.gouv.qc.ca/en/citizens/health-insurance/health-insurance-card/Pages/description.aspx" tabindex="-1">ramq</a> for help.</div>
             </div>
             
-            <input type="submit" class="btn-primary btn-lg" value="Submit">
+            <input type="submit" id="form_submit" class="btn-primary btn-lg" value="Submit">
         </form>
     </div>
 </body>
