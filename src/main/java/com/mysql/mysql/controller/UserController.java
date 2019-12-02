@@ -41,7 +41,6 @@ public class UserController {
 
     @PostMapping("/user")
     public String processRegister(@ModelAttribute AppUser user) {
-        System.out.println(user);
 		userService.addUser(user);
 		return "redirect:/";
 	}
