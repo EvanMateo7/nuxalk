@@ -37,9 +37,10 @@ public class BookingController {
     }
 
     @PostMapping("/booking")
-    public void processBooking(@ModelAttribute Booking booking){
+    public String processBooking(@ModelAttribute Booking booking){
         System.out.println(booking);
         bookingService.addBooking(booking);
+        return "redirect:/";
     }
 
     @GetMapping("/booking")

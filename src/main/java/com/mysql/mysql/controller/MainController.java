@@ -9,8 +9,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.awt.print.Book;
-import java.util.ArrayList;
+import java.sql.Time;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 @Controller
 public class MainController {
@@ -37,7 +41,12 @@ public class MainController {
         model.addAttribute("user", new AppUser());
         model.addAttribute("listOfUsers", userService.findAll());
         model.addAttribute("booking", new Booking());
-        model.addAttribute("listOfBooking", bookingService.getAllBooking());
+        model.addAttribute("bookingDate", new GregorianCalendar(2014, Calendar.FEBRUARY, 11).getTime()); //Random Date object created, the initialized values will be replaced by the one inputted by the user
+        model.addAttribute("bookingTime", new Time(11111)); //Random value for time initialized.
+        model.addAttribute("localDate", java.time.LocalDate.now()); //YYYY-MM-DD
+        model.addAttribute("standardDate", new Date());
+        model.addAttribute("localDateTime", LocalDateTime.now());
+        model.addAttribute("timestamp", Instant.now());
 		return "scheduling";
     }
 }

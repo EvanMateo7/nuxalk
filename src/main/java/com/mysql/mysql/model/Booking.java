@@ -1,9 +1,9 @@
 package com.mysql.mysql.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.sql.Time;
 import java.util.Date;
 
 @Entity
@@ -15,20 +15,13 @@ public class Booking {
     private int id;
 
     @NotNull
-    private Time startTime;
-
-    @NotNull
-    private Time end;
-
-    @NotNull
-    private Time duration;
-
-    @NotNull
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date;
 
     @NotNull
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "appUser_id", referencedColumnName = "id")
+    private String time;
+
+    @OneToOne(mappedBy = "booking")
     private AppUser appUser;
 
     public AppUser getAppUser() {
@@ -38,7 +31,6 @@ public class Booking {
     public void setAppUser(AppUser appUser) {
         this.appUser = appUser;
     }
-
     public int getId() {
         return id;
     }
@@ -47,28 +39,12 @@ public class Booking {
         this.id = id;
     }
 
-    public Time getStartTime() {
-        return startTime;
+    public String getTime() {
+        return time;
     }
 
-    public void setStartTime(Time startTime) {
-        this.startTime = startTime;
-    }
-
-    public Time getEnd() {
-        return end;
-    }
-
-    public void setEnd(Time end) {
-        this.end = end;
-    }
-
-    public Time getDuration() {
-        return duration;
-    }
-
-    public void setDuration(Time duration) {
-        this.duration = duration;
+    public void setTime(String time) {
+        this.time = time;
     }
 
     public Date getDate() {
@@ -80,6 +56,6 @@ public class Booking {
     }
 
     public String toString(){
-        return "The booking date is: " + this.getDate().toString() + " by patient " + getAppUser().toString() + ". This booking starts at " + getStartTime().toString() + " and ends at " + getEnd() + ".";
+        return "The booking date is: " + this.getDate().toString() + ". This booking starts at " + getTime() + ".";
     }
 }

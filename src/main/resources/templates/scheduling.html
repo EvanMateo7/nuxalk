@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="UTF-8">
@@ -28,6 +28,51 @@
     <section th:replace="./navbar"></section>
 
     <h3 class="title">Scheduling</h3>
+
+
+<!--    <label for="start">Start date:</label>-->
+
+<!--    <input type="date" id="start" name="trip-start"-->
+<!--           value="2018-07-22" th:value="${localDate}"-->
+<!--           th:min="${localDate}">-->
+
+<!--    <label for="appt">Choose a time for your meeting:</label>-->
+
+<!--    <input type="time" id="appt" name="appt"-->
+<!--           min="08:00" max="18:00" required>-->
+
+    <small>Office hours are 9am to 6pm</small>
+
+    <div class="flexRowCenter">
+        <form id="newBookingForm" th:action="@{/booking}" th:object="${booking}" method="post">
+            <label for="start">Start date:</label>
+            <input type="date" id="start" name="booking-start" th:value="${localDate}" th:min="${localDate}" th:field="*{date}">
+            <label for="booking">Choose a time for your meeting:</label>
+            <input id="booking" max="18:00" min="08:00" name="appt" th:field="*{time}" th:value="${timestamp}"
+                   type="time" value="13:30">
+            <input type="submit" class="btn-primary" value="Submit">
+        </form>
+    </div>
+
+
+<!--    <table>-->
+<!--        <thead>-->
+<!--        <tr>-->
+<!--            <th> User name </th>-->
+<!--            <th> Insurance Number </th>-->
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--        <tr th:if="${listOfUsers.empty}">-->
+<!--            <td colspan="2"> No Users Available </td>-->
+<!--        </tr>-->
+<!--        <tr th:each="user : ${listOfUsers}">-->
+<!--            <td><span th:text="${user.username}"> User name </span></td>-->
+<!--            <td><span th:text="${user.insuranceNumber}">  Insurance Number </span></td>-->
+<!--        </tr>-->
+<!--        </tbody>-->
+<!--    </table>-->
+
 </body>
 
 </html>
