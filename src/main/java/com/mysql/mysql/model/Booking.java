@@ -21,8 +21,11 @@ public class Booking {
     @NotNull
     private String time;
 
-    @OneToOne(mappedBy = "booking")
+    @OneToOne(cascade=CascadeType.PERSIST)
     private AppUser appUser;
+
+    @Column(name = "patient_id", insertable = false, updatable = false)
+    private String patientID;
 
     public AppUser getAppUser() {
         return appUser;
@@ -56,6 +59,6 @@ public class Booking {
     }
 
     public String toString(){
-        return "The booking date is: " + this.getDate().toString() + ". This booking starts at " + getTime() + ".";
+        return "The booking date is: " + this.getDate().toString() + ". This booking starts at " + getTime() + " with patient: " +  getAppUser().getLastName() + ", " + getAppUser().getFirstName() + ".";
     }
 }

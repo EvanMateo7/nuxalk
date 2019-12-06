@@ -41,6 +41,7 @@ public class MainController {
         model.addAttribute("user", new AppUser());
         model.addAttribute("listOfUsers", userService.findAll());
         model.addAttribute("booking", new Booking());
+        model.addAttribute("listOfBookings", bookingService.getAllBooking());
         model.addAttribute("bookingDate", new GregorianCalendar(2014, Calendar.FEBRUARY, 11).getTime()); //Random Date object created, the initialized values will be replaced by the one inputted by the user
         model.addAttribute("bookingTime", new Time(11111)); //Random value for time initialized.
         model.addAttribute("localDate", java.time.LocalDate.now()); //YYYY-MM-DD

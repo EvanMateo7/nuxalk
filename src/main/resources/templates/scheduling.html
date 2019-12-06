@@ -29,49 +29,55 @@
 
     <h3 class="title">Scheduling</h3>
 
-
-<!--    <label for="start">Start date:</label>-->
-
-<!--    <input type="date" id="start" name="trip-start"-->
-<!--           value="2018-07-22" th:value="${localDate}"-->
-<!--           th:min="${localDate}">-->
-
-<!--    <label for="appt">Choose a time for your meeting:</label>-->
-
-<!--    <input type="time" id="appt" name="appt"-->
-<!--           min="08:00" max="18:00" required>-->
-
-    <small>Office hours are 9am to 6pm</small>
+    <p>Office hours are 9am to 6pm</p>
 
     <div class="flexRowCenter">
         <form id="newBookingForm" th:action="@{/booking}" th:object="${booking}" method="post">
-            <label for="start">Start date:</label>
+            <label for="start">Choose a date:</label>
             <input type="date" id="start" name="booking-start" th:value="${localDate}" th:min="${localDate}" th:field="*{date}">
-            <label for="booking">Choose a time for your meeting:</label>
-            <input id="booking" max="18:00" min="08:00" name="appt" th:field="*{time}" th:value="${timestamp}"
-                   type="time" value="13:30">
+            <br>
+            <label for="booking">Choose a time for your meeting </label>
+            <input id="booking" max="18:00" min="08:00" name="appt" th:field="*{time}" th:value="${timestamp}" type="time" value="13:30">
+            <br>
+            <div class="form-group blu-margin">
+                <label for="dropDownInsuranceNumber">Choose a patient using Health Insurance Number </label>
+                <select id="dropDownInsuranceNumber" th:field="*{appUser}">
+                    <option value="0">Select A Patient</option>
+                    <option th:each="appUser : ${listOfUsers}" th:value="${appUser.id}" th:text="${appUser.firstName + ' ' + appUser.lastName + ', ' + appUser.insuranceNumber}"></option>
+                </select>
+            </div>
+<!--            <label for="booking">Choose a patient using Health Insurance Number </label>-->
+<!--            <input id="p" max="18:00" min="08:00" name="appt" th:field="*{time}" th:value="${timestamp}" type="time" value="13:30">-->
             <input type="submit" class="btn-primary" value="Submit">
         </form>
     </div>
 
+    <div class="flexRowCenter">
+        <table>
+            <thead>
+            <tr>
+                <th> Patient's Insurance Number</th>
+                <th> Patient's Last Name</th>
+                <th> Date </th>
+                <th> Start Time </th>
+                <th> Duration (in hours) </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:if="${listOfBookings.empty}">
+                <td colspan="2"> No Booking available Available At This Time</td>
+            </tr>
+            <tr th:each="booking : ${listOfBookings}">
+                <td><span th:text="${booking.appUser?.insuranceNumber}"> Patient Insurance Number </span></td>
+                <td><span th:text="${booking.appUser?.lastName}"> Patient's Name </span></td>
+                <td><span th:text="${booking.date}"> Date </span></td>
+                <td><span th:text="${booking.time}"> Start Time </span></td>
+                <td><span th:text="${booking.time}"> Duration (in hours) </span></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 
-<!--    <table>-->
-<!--        <thead>-->
-<!--        <tr>-->
-<!--            <th> User name </th>-->
-<!--            <th> Insurance Number </th>-->
-<!--        </tr>-->
-<!--        </thead>-->
-<!--        <tbody>-->
-<!--        <tr th:if="${listOfUsers.empty}">-->
-<!--            <td colspan="2"> No Users Available </td>-->
-<!--        </tr>-->
-<!--        <tr th:each="user : ${listOfUsers}">-->
-<!--            <td><span th:text="${user.username}"> User name </span></td>-->
-<!--            <td><span th:text="${user.insuranceNumber}">  Insurance Number </span></td>-->
-<!--        </tr>-->
-<!--        </tbody>-->
-<!--    </table>-->
 
 </body>
 

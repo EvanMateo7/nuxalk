@@ -59,22 +59,6 @@ public class AppUser {
     )
     Set<Role> userRoles;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "assigned_bookings",
-            joinColumns = @JoinColumn(name = "userID"),
-            inverseJoinColumns = @JoinColumn(name = "bookingID")
-    )
-    private Booking booking;
-
-    public Booking getBooking() {
-        return booking;
-    }
-
-    public void setBooking(Booking booking) {
-        this.booking = booking;
-    }
-
     public Gender getGender() {
         return gender;
     }
